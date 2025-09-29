@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package principal;
+package main;
 
 /**
  *
- * @author mdjes
+ * @author Cotez, Manuel;
  */
-public class Asignacion09AnotacionesJPA {
+public class JPAEmpresa {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
