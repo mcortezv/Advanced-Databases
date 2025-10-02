@@ -18,10 +18,11 @@ public class SuperHeroe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (unique = true)
+    @Column (unique = true, nullable = false)
     private String nombre;
 
     @Enumerated(EnumType.STRING)
+    @Column (nullable = false)
     private String universo;
 
     @Embedded
@@ -29,6 +30,17 @@ public class SuperHeroe {
 
     @Transient
     private String fraseIconica;
+
+    public SuperHeroe(){}
+
+    public SuperHeroe(Long id, String nombre, String universo,
+                      String identidadSecreta, String fraseIconica){
+        this.id = id;
+        this.nombre = nombre;
+        this.universo = universo;
+        this.identidadSecreta = identidadSecreta;
+        this.fraseIconica = identidadSecreta;
+    }
 
     public Long getId() {
         return id;
