@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package models;
-
 import jakarta.persistence.*;
 
 /**
@@ -23,23 +22,23 @@ public class SuperHeroe {
 
     @Enumerated(EnumType.STRING)
     @Column (nullable = false)
-    private String universo;
+    private models.Universo universo;
 
     @Embedded
-    private String identidadSecreta;
+    private IdentidadSecreta identidadSecreta;
 
     @Transient
     private String fraseIconica;
 
     public SuperHeroe(){}
 
-    public SuperHeroe(Long id, String nombre, String universo,
-                      String identidadSecreta, String fraseIconica){
+    public SuperHeroe(String nombre, Universo universo,
+                      IdentidadSecreta identidadSecreta, String fraseIconica){
         this.id = id;
         this.nombre = nombre;
         this.universo = universo;
         this.identidadSecreta = identidadSecreta;
-        this.fraseIconica = identidadSecreta;
+        this.fraseIconica = fraseIconica;
     }
 
     public Long getId() {
@@ -58,19 +57,19 @@ public class SuperHeroe {
         this.nombre = nombre;
     }
 
-    public String getUniverso() {
+    public Universo getUniverso() {
         return universo;
     }
 
-    public void setUniverso(String universo) {
+    public void setUniverso(Universo universo) {
         this.universo = universo;
     }
 
-    public String getUnidadSecreta() {
+    public IdentidadSecreta getIdentidadSecreta() {
         return identidadSecreta;
     }
 
-    public void setUnidadSecreta(String identidadSecreta) {
+    public void setIdentidadSecreta(IdentidadSecreta identidadSecreta) {
         this.identidadSecreta = identidadSecreta;
     }
 
@@ -80,5 +79,10 @@ public class SuperHeroe {
 
     public void setFraseIconica(String fraseIconica) {
         this.fraseIconica = fraseIconica;
+    }
+
+    @Override
+    public String toString(){
+        return String.format("ID: %d \nNombre: %s \nUniverso: %s \nIdentidad Secreta: %s \nFrase Iconica: %s", this.getId(), this.getNombre(), this.getUniverso(), this.getIdentidadSecreta(), this.getFraseIconica());
     }
 }

@@ -11,13 +11,13 @@ import jakarta.persistence.*;
  * @author Laboratorios
  */
 public class JPAUtil {
-    private static final String PERSISTENCE_UNIT = "SuperHeroePU";
+    private static final String PERSISTENCE_UNIT = "SuperHeroesPU";
     private static EntityManagerFactory emf;
 
     public JPAUtil(){}
 
     public static EntityManager getEntityManager(){
-        if (emf != null){
+        if (emf == null){
             emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
         }
         return emf.createEntityManager();
