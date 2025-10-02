@@ -4,10 +4,24 @@
  */
 package interfaces;
 
+import models.SuperHeroe;
+
+import java.util.List;
+
 /**
  *
  * @author Laboratorios
  */
 public interface ISuperHeroeDAO {
+
+    void insertar(SuperHeroe superHeroe);
+
+    void actualizar(SuperHeroe superHeroe);
+
+    void eliminar(Long id);
+
+    SuperHeroe buscar(Long id);
+
+    List<SuperHeroe> listar();
     
 }
