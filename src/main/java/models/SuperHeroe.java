@@ -12,7 +12,7 @@ import jakarta.persistence.*;
  */
 
 @Entity
-@Table (name = "Superheroe")
+@Table (name = "superheroes")
 public class SuperHeroe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,11 +67,11 @@ public class SuperHeroe {
     }
 
     public String getUnidadSecreta() {
-        return unidadSecreta;
+        return identidadSecreta;
     }
 
-    public void setUnidadSecreta(String unidadSecreta) {
-        this.unidadSecreta = unidadSecreta;
+    public void setUnidadSecreta(String identidadSecreta) {
+        this.identidadSecreta = identidadSecreta;
     }
 
     public String getFraseIconica() {
