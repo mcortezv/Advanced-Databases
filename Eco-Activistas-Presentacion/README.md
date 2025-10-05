@@ -1,7 +1,7 @@
-![alt text](<Desktop Screenshot 2025.10.05 - 16.10.50.71.png>) 
+![alt text](screenshot1-1.png)
 
-![alt text](<Desktop Screenshot 2025.10.05 - 16.10.41.41.png>) 
+![alt text](screenshot1-2.png)
 
-![alt text](<Desktop Screenshot 2025.10.05 - 16.10.45.23.png>) 
+![alt text](screenshot1-3.png)
 
-![alt text](<Desktop Screenshot 2025.10.05 - 16.10.47.70.png>)
+![alt text](screenshot1-4.png)
