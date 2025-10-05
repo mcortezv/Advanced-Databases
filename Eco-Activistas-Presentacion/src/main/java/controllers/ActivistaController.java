@@ -34,7 +34,9 @@ public class ActivistaController {
      * @return boolean
      */
     public boolean agregarActivista(String nombre, String correo, String telefono) {
-        if (nombre == null || nombre.trim().isEmpty()) return false;
+        if (nombre == null || nombre.trim().isEmpty()) {
+            return false;
+        }
         if (correo == null) correo = "";
         if (telefono == null) telefono = "";
         Activista activista = new Activista(0, nombre, correo, telefono);
