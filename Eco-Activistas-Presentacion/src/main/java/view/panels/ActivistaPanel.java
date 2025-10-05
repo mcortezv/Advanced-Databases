@@ -18,10 +18,10 @@ import java.awt.*;
  * @author Cortez, Manuel;
  */
 public class ActivistaPanel extends Panel {
-    private Button btnCreateTutor;
-    private Button btnReadTutor;
-    private Button btnUpdateTutor;
-    private Button btnDeleteTutor;
+    private Button btnAgregarActivista;
+    private Button btnBuscarActivista;
+    private Button btnActualizarActivista;
+    private Button btnEliminarActivista;
     private TablePanel tablePanel;
     private MainController controller;
 
@@ -33,40 +33,40 @@ public class ActivistaPanel extends Panel {
 
     @Override
     public void startComponents() {
-        btnCreateTutor = new Button("Agregar Activista");
-        btnReadTutor = new Button("Buscar Activista");
-        btnUpdateTutor = new Button("Actualizar Activista");
-        btnDeleteTutor = new Button("Eliminar Activista");
+        btnAgregarActivista = new Button("Agregar Activista");
+        btnBuscarActivista = new Button("Buscar Activista");
+        btnActualizarActivista = new Button("Actualizar Activista");
+        btnEliminarActivista = new Button("Eliminar Activista");
         tablePanel = new TablePanel();
-        btnCreateTutor.setPreferredSize(new Dimension(230, 40));
-        btnReadTutor.setPreferredSize(new Dimension(230, 40));
-        btnUpdateTutor.setPreferredSize(new Dimension(230, 40));
-        btnDeleteTutor.setPreferredSize(new Dimension(230, 40));
+        btnAgregarActivista.setPreferredSize(new Dimension(230, 40));
+        btnBuscarActivista.setPreferredSize(new Dimension(230, 40));
+        btnActualizarActivista.setPreferredSize(new Dimension(230, 40));
+        btnEliminarActivista.setPreferredSize(new Dimension(230, 40));
 
-        btnCreateTutor.addActionListener(e -> {
+        btnAgregarActivista.addActionListener(e -> {
             new ActivistaFormDialog(mainFrame, controller, 0).setVisible(true);
             updateTable();
         });
 
-        btnReadTutor.addActionListener(e -> {
+        btnBuscarActivista.addActionListener(e -> {
             new ActivistaFormDialog(mainFrame, controller, 1).setVisible(true);
         });
 
-        btnUpdateTutor.addActionListener(e -> {
+        btnActualizarActivista.addActionListener(e -> {
             new ActivistaFormDialog(mainFrame, controller, 2).setVisible(true);
             updateTable();
 
         });
 
-        btnDeleteTutor.addActionListener(e -> {
+        btnEliminarActivista.addActionListener(e -> {
             new ActivistaFormDialog(mainFrame, controller, 3).setVisible(true);
             updateTable();
         });
 
-        leftPanel.add(btnCreateTutor);
-        leftPanel.add(btnReadTutor);
-        leftPanel.add(btnUpdateTutor);
-        leftPanel.add(btnDeleteTutor);
+        leftPanel.add(btnAgregarActivista);
+        leftPanel.add(btnBuscarActivista);
+        leftPanel.add(btnActualizarActivista);
+        leftPanel.add(btnEliminarActivista);
         rightPanel.add(tablePanel);
     }
 

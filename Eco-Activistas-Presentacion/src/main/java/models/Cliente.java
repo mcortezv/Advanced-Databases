@@ -66,4 +66,14 @@ public class Cliente {
     public void setTelefonos(String telefonos) {
         this.telefonos = telefonos;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "idCliente=" + idCliente +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefonos='" + telefonos + '\'' +
+                '}';
+    }
 }

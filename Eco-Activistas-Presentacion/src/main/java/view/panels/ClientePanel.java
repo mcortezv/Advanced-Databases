@@ -3,14 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package view.panels;
-
 import controllers.MainController;
 import utils.TableModel;
 import view.MainFrame;
 import view.formsDialog.ClienteFormDialog;
 import view.styles.Button;
 import view.styles.Panel;
-
 import java.awt.*;
 
 /**
@@ -18,10 +16,10 @@ import java.awt.*;
  * @author Cortez, Manuel;
  */
 public class ClientePanel extends Panel {
-    private Button btnCreateEstudiante;
-    private Button btnReadEstudiante;
-    private Button btnUpdateEstudiante;
-    private Button btnDeleteEstudiante;
+    private Button btnAgregarCliente;
+    private Button btnBuscarCliente;
+    private Button btnActualizarCliente;
+    private Button btnEliminarCliente;
     private TablePanel tablePanel;
     private MainController controller;
 
@@ -33,35 +31,35 @@ public class ClientePanel extends Panel {
 
     @Override
     public void startComponents() {
-        btnCreateEstudiante = new Button("Agregar Cliente");
-        btnReadEstudiante = new Button("Buscar Cliente");
-        btnUpdateEstudiante = new Button("Actualizar Cliente");
-        btnDeleteEstudiante = new Button("Eliminar Cliente");
+        btnAgregarCliente = new Button("Agregar Cliente");
+        btnBuscarCliente = new Button("Buscar Cliente");
+        btnActualizarCliente = new Button("Actualizar Cliente");
+        btnEliminarCliente = new Button("Eliminar Cliente");
         tablePanel = new TablePanel();
-        btnCreateEstudiante.setPreferredSize(new Dimension(230, 40));
-        btnReadEstudiante.setPreferredSize(new Dimension(230, 40));
-        btnUpdateEstudiante.setPreferredSize(new Dimension(230, 40));
-        btnDeleteEstudiante.setPreferredSize(new Dimension(230, 40));
-        btnCreateEstudiante.addActionListener(e -> {
+        btnAgregarCliente.setPreferredSize(new Dimension(230, 40));
+        btnBuscarCliente.setPreferredSize(new Dimension(230, 40));
+        btnActualizarCliente.setPreferredSize(new Dimension(230, 40));
+        btnEliminarCliente.setPreferredSize(new Dimension(230, 40));
+        btnAgregarCliente.addActionListener(e -> {
             new ClienteFormDialog(mainFrame, controller, 0).setVisible(true);
             updateTable();
         });
-        btnReadEstudiante.addActionListener(e -> {
+        btnBuscarCliente.addActionListener(e -> {
             new ClienteFormDialog(mainFrame, controller, 1).setVisible(true);
         });
-        btnUpdateEstudiante.addActionListener(e -> {
+        btnActualizarCliente.addActionListener(e -> {
             new ClienteFormDialog(mainFrame, controller, 2).setVisible(true);
             updateTable();
         });
-        btnDeleteEstudiante.addActionListener(e -> {
+        btnEliminarCliente.addActionListener(e -> {
             new ClienteFormDialog(mainFrame, controller, 3).setVisible(true);
             updateTable();
         });
 
-        leftPanel.add(btnCreateEstudiante);
-        leftPanel.add(btnReadEstudiante);
-        leftPanel.add(btnUpdateEstudiante);
-        leftPanel.add(btnDeleteEstudiante);
+        leftPanel.add(btnAgregarCliente);
+        leftPanel.add(btnBuscarCliente);
+        leftPanel.add(btnActualizarCliente);
+        leftPanel.add(btnEliminarCliente);
         rightPanel.add(tablePanel);
     }
 

@@ -3,9 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package view.panels;
-
 import view.styles.Style;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -20,7 +18,7 @@ public class MainPanel extends JPanel {
 
     public MainPanel() {
         this.imagen = new ImageIcon(
-                new ImageIcon("src/main/java/assets/start.jpg")
+                new ImageIcon("src/main/java/assets/start.png")
                         .getImage()
                         .getScaledInstance(901, 600, Image.SCALE_SMOOTH)
         ).getImage();

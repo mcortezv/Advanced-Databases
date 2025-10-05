@@ -66,4 +66,14 @@ public class Activista {
     public void setFchIngreso(String fchIngreso) {
         this.fchIngreso = fchIngreso;
     }
+
+    @Override
+    public String toString() {
+        return "Activista{" +
+                "idActivista=" + idActivista +
+                ", nombre='" + nombre + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", fchIngreso='" + fchIngreso + '\'' +
+                '}';
+    }
 }

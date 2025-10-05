@@ -16,9 +16,9 @@ import java.awt.*;
  * @author Cortez, Manuel;
  */
 public class ProblemaActivistaPanel extends Panel {
-    private Button btnCreateHorario;
-    private Button btnReadHorario;
-    private Button btnDeleteHorario;
+    private Button btnAgregarProblemaActivista;
+    private Button btnBuscarProblemaActivista;
+    private Button btnEliminarProblemaActivista;
     private TablePanel tablePanel;
     private MainController controller;
 
@@ -30,31 +30,31 @@ public class ProblemaActivistaPanel extends Panel {
 
     @Override
     public void startComponents() {
-        btnCreateHorario =  new Button("Agregar Problema Activista");
-        btnReadHorario =  new Button("Busar Problema Activista");
-        btnDeleteHorario =  new Button("Eliminar Problema Activista");
+        btnAgregarProblemaActivista =  new Button("Agregar Problema Activista");
+        btnBuscarProblemaActivista =  new Button("Busar Problema Activista");
+        btnEliminarProblemaActivista =  new Button("Eliminar Problema Activista");
         tablePanel = new TablePanel();
-        btnCreateHorario.setPreferredSize(new Dimension(260, 40));
-        btnReadHorario.setPreferredSize(new Dimension(260, 40));
-        btnDeleteHorario.setPreferredSize(new Dimension(260, 40));
+        btnAgregarProblemaActivista.setPreferredSize(new Dimension(260, 40));
+        btnBuscarProblemaActivista.setPreferredSize(new Dimension(260, 40));
+        btnEliminarProblemaActivista.setPreferredSize(new Dimension(260, 40));
 
-        btnCreateHorario.addActionListener(e -> {
+        btnAgregarProblemaActivista.addActionListener(e -> {
             new ProblemaActivistaFormDialog(mainFrame, controller, 0).setVisible(true);
             updateTable();
         });
 
-        btnReadHorario.addActionListener(e -> {
+        btnBuscarProblemaActivista.addActionListener(e -> {
             new ProblemaActivistaFormDialog(mainFrame, controller, 1).setVisible(true);
         });
 
-        btnDeleteHorario.addActionListener(e -> {
+        btnEliminarProblemaActivista.addActionListener(e -> {
             new ProblemaActivistaFormDialog(mainFrame, controller, 2).setVisible(true);
             updateTable();
         });
 
-        leftPanel.add(btnCreateHorario);
-        leftPanel.add(btnReadHorario);
-        leftPanel.add(btnDeleteHorario);
+        leftPanel.add(btnAgregarProblemaActivista);
+        leftPanel.add(btnBuscarProblemaActivista);
+        leftPanel.add(btnEliminarProblemaActivista);
         rightPanel.add(tablePanel);
     }
 

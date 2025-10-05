@@ -77,4 +77,15 @@ public class Problema {
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
+
+    @Override
+    public String toString() {
+        return "Problema{" +
+                "idProblema=" + idProblema +
+                ", fchIni='" + fchIni + '\'' +
+                ", fchFin='" + fchFin + '\'' +
+                ", estado='" + estado + '\'' +
+                ", idCliente=" + idCliente +
+                '}';
+    }
 }

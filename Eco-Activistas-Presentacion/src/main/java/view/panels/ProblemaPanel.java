@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package view.panels;
-
 import controllers.MainController;
 import utils.TableModel;
 import view.MainFrame;
@@ -18,10 +17,10 @@ import java.awt.*;
  * @author Cortez, Manuel;
  */
 public class ProblemaPanel extends Panel {
-    private Button btnCreateMateria;
-    private Button btnReadMateria;
-    private Button btnUpdateMateria;
-    private Button btnDeleteMateria;
+    private Button btnAgregarProblema;
+    private Button btnBuscarProblema;
+    private Button btnActualizarProblema;
+    private Button btnEliminarProblema;
     private TablePanel tablePanel;
     private MainController controller;
 
@@ -33,39 +32,39 @@ public class ProblemaPanel extends Panel {
 
     @Override
     public void startComponents() {
-        btnCreateMateria =  new Button("Agregar Problema");
-        btnReadMateria =  new Button("Buscar Problema");
-        btnUpdateMateria =  new Button("Actualizar Problema");
-        btnDeleteMateria =  new Button("Eliminar Problema");
+        btnAgregarProblema =  new Button("Agregar Problema");
+        btnBuscarProblema =  new Button("Buscar Problema");
+        btnActualizarProblema =  new Button("Actualizar Problema");
+        btnEliminarProblema =  new Button("Eliminar Problema");
         tablePanel = new TablePanel();
-        btnCreateMateria.setPreferredSize(new Dimension(230, 40));
-        btnReadMateria.setPreferredSize(new Dimension(230, 40));
-        btnUpdateMateria.setPreferredSize(new Dimension(230, 40));
-        btnDeleteMateria.setPreferredSize(new Dimension(230, 40));
+        btnAgregarProblema.setPreferredSize(new Dimension(230, 40));
+        btnBuscarProblema.setPreferredSize(new Dimension(230, 40));
+        btnActualizarProblema.setPreferredSize(new Dimension(230, 40));
+        btnEliminarProblema.setPreferredSize(new Dimension(230, 40));
 
-        btnCreateMateria.addActionListener(e -> {
+        btnAgregarProblema.addActionListener(e -> {
             new ProblemaFormDialog(mainFrame, controller, 0).setVisible(true);
             updateTable();
         });
 
-        btnReadMateria.addActionListener(e -> {
+        btnBuscarProblema.addActionListener(e -> {
             new ProblemaFormDialog(mainFrame, controller, 1).setVisible(true);
         });
 
-        btnUpdateMateria.addActionListener(e -> {
+        btnActualizarProblema.addActionListener(e -> {
             new ProblemaFormDialog(mainFrame, controller, 2).setVisible(true);
             updateTable();
         });
 
-        btnDeleteMateria.addActionListener(e -> {
+        btnEliminarProblema.addActionListener(e -> {
             new ProblemaFormDialog(mainFrame, controller, 3).setVisible(true);
             updateTable();
         });
 
-        leftPanel.add(btnCreateMateria);
-        leftPanel.add(btnReadMateria);
-        leftPanel.add(btnUpdateMateria);
-        leftPanel.add(btnDeleteMateria);
+        leftPanel.add(btnAgregarProblema);
+        leftPanel.add(btnBuscarProblema);
+        leftPanel.add(btnActualizarProblema);
+        leftPanel.add(btnEliminarProblema);
         rightPanel.add(tablePanel);
     }
 

@@ -1,8 +1,6 @@
 package view.panels;
-
 import view.styles.Style;
 import view.styles.Table;
-
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.TableModel;

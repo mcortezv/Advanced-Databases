@@ -24,10 +24,10 @@ public final class MainFrame extends JFrame {
     private MainPanel mainPanel;
     private JPanel centralPanel;
     private NorthPanel northPanel;
-    private ClientePanel estudiantePanel;
-    private ActivistaPanel tutorPanel;
-    private ProblemaActivistaPanel horarioPanel;
-    private ProblemaPanel materiaPanel;
+    private ClientePanel clientePanel;
+    private ActivistaPanel activistaPanel;
+    private ProblemaActivistaPanel problemaActivistaPanel;
+    private ProblemaPanel problemaPanel;
     private final MainController mainController;
 
     public MainFrame(MainController mainController) {
@@ -56,10 +56,10 @@ public final class MainFrame extends JFrame {
         centralPanel.setBackground(Style.PANEL_COLOR);
         add(centralPanel, BorderLayout.CENTER);
 
-        estudiantePanel = new ClientePanel(this, northPanel, mainController);
-        tutorPanel = new ActivistaPanel(this, northPanel, mainController);
-        horarioPanel = new ProblemaActivistaPanel(this, northPanel , mainController);
-        materiaPanel = new ProblemaPanel(this, northPanel , mainController);
+        clientePanel = new ClientePanel(this, northPanel, mainController);
+        activistaPanel = new ActivistaPanel(this, northPanel, mainController);
+        problemaActivistaPanel = new ProblemaActivistaPanel(this, northPanel , mainController);
+        problemaPanel = new ProblemaPanel(this, northPanel , mainController);
 
         add(northPanel, BorderLayout.NORTH);
         northPanel.add(btnClientes);
@@ -72,8 +72,8 @@ public final class MainFrame extends JFrame {
         btnProblemasActivistas.setPreferredSize(new Dimension(200, 40));
         btnProblemas.setPreferredSize(new Dimension(160, 40));
         btnClientes.addActionListener(e -> {
-            estudiantePanel.updateTable();
-            showPanel(estudiantePanel);
+            clientePanel.updateTable();
+            showPanel(clientePanel);
         });
         btnClientes.addActionListener(e -> {
             btnInUse = btnClientes;
@@ -81,8 +81,8 @@ public final class MainFrame extends JFrame {
         });
 
         btnActivistas.addActionListener(e -> {
-            tutorPanel.updateTable();
-            showPanel(tutorPanel);
+            activistaPanel.updateTable();
+            showPanel(activistaPanel);
         });
         btnActivistas.addActionListener(e -> {
             btnInUse = btnActivistas;
@@ -90,8 +90,8 @@ public final class MainFrame extends JFrame {
         });
 
         btnProblemasActivistas.addActionListener(e -> {
-            horarioPanel.updateTable();
-            showPanel(horarioPanel);
+            problemaActivistaPanel.updateTable();
+            showPanel(problemaActivistaPanel);
         });
         btnProblemasActivistas.addActionListener(e -> {
             btnInUse = btnProblemasActivistas;
@@ -99,8 +99,8 @@ public final class MainFrame extends JFrame {
         });
 
         btnProblemas.addActionListener(e -> {
-            materiaPanel.updateTable();
-            showPanel(materiaPanel);
+            problemaPanel.updateTable();
+            showPanel(problemaPanel);
         });
         btnProblemas.addActionListener(e -> {
             btnInUse = btnProblemas;

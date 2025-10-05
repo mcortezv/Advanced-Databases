@@ -44,4 +44,12 @@ public class ProblemaActivista {
     public void setIdActivista(int idActivista) {
         this.idActivista = idActivista;
     }
+
+    @Override
+    public String toString() {
+        return "ProblemaActivista{" +
+                "idProblema=" + idProblema +
+                ", idActivista=" + idActivista +
+                '}';
+    }
 }
