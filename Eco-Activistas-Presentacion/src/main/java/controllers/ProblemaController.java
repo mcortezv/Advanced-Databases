@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class ProblemaController {
     private final IProblemaDAO problemaDAO;
+    private static int contador = 100;
 
     /**
      * Constructor vacio que instancia un nuevo ProblemaDAO.
@@ -38,7 +39,8 @@ public class ProblemaController {
         if (estado == null || estado.trim().isEmpty()) return false;
         if (idCliente <= 0) return false;
 
-        Problema problema = new Problema(0, fchIni, fchFin, estado, idCliente);
+        Problema problema = new Problema(contador, fchIni, fchFin, estado, idCliente);
+        contador++;
         return this.problemaDAO.insertar(problema);
     }
 

@@ -22,10 +22,10 @@ public final class ProblemaFormDialog extends Dialog {
     private JPanel southPanel;
     private MainFrame mainFrame;
     private TextField idField;
-    private TextField nombreField;
-    private TextField descripcionField;
-    private TextField idClienteField;
+    private TextField fechaInicioField;
+    private TextField fechaFinField;
     private TextField estadoField;
+    private TextField idActivistaField;
     private ProblemaController controller;
 
     public ProblemaFormDialog(MainFrame owner, MainController controller, int option) {
@@ -38,41 +38,41 @@ public final class ProblemaFormDialog extends Dialog {
         switch (option) {
             case 0 -> {
                 setTitle("Agregar Problema");
-                createMateria();
+                createProblema();
             }
             case 1 -> {
                 setTitle("Buscar Problema");
-                readMateria();
+                readProblema();
             }
             case 2 -> {
                 setTitle("Actualizar Problema");
-                updateMateria();
+                updateProblema();
             }
             case 3 -> {
                 setTitle("Eliminar Problema");
-                deleteMateria();
+                deleteProblema();
             }
             default -> {}
         }
     }
 
-    public void createMateria() {
+    public void createProblema() {
         setSize(500, 400);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
-        JPanel nombrePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        nombrePanel.add(new JLabel("Fecha Inicio:      "));
-        nombreField = new TextField(20);
-        nombrePanel.add(nombreField);
-        nombrePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
+        JPanel fechaInicioPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        fechaInicioPanel.add(new JLabel("Fecha Inicio:      "));
+        fechaFinField = new TextField(20);
+        fechaInicioPanel.add(fechaFinField);
+        fechaInicioPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
-        JPanel descripcionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        descripcionPanel.add(new JLabel("Fecha Fin:   "));
-        descripcionField = new TextField(20);
-        descripcionPanel.add(descripcionField);
-        descripcionPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
+        JPanel fechaFinPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        fechaFinPanel.add(new JLabel("Fecha Fin:   "));
+        fechaFinField = new TextField(20);
+        fechaFinPanel.add(fechaFinField);
+        fechaFinPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
         JPanel estadoPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         estadoPanel.add(new JLabel("Estado:   "));
@@ -80,19 +80,19 @@ public final class ProblemaFormDialog extends Dialog {
         estadoPanel.add(estadoField);
         estadoPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
-        JPanel idClientePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        idClientePanel.add(new JLabel("Id Cliente:   "));
-        idClienteField = new TextField(20);
-        idClientePanel.add(idClienteField);
-        idClientePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
+        JPanel idActivistaPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        idActivistaPanel.add(new JLabel("Id Cliente:   "));
+        idActivistaField = new TextField(20);
+        idActivistaPanel.add(idActivistaField);
+        idActivistaPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
         Button btnCreate = new Button("Agregar");
         btnCreate.addActionListener(e -> {
-            if (!nombreField.getText().trim().isBlank() || !descripcionField.getText().trim().isBlank()) {
-                if (controller.agregarProblema(nombreField.getText().trim(),
-                        descripcionField.getText().trim(),
+            if (!fechaInicioField.getText().trim().isBlank() || !fechaFinField.getText().trim().isBlank()) {
+                if (controller.agregarProblema(fechaInicioField.getText().trim(),
+                        fechaFinField.getText().trim(),
                         estadoField.getText().trim(),
-                        Integer.parseInt(idClienteField.getText().trim()))) {
+                        Integer.parseInt(idActivistaField.getText().trim()))) {
                     JOptionPane.showMessageDialog(centerPanel, "Problema agregada con exito");
                 } else {
                     JOptionPane.showMessageDialog(centerPanel, "La Problema no se pudo agregar");
@@ -103,17 +103,17 @@ public final class ProblemaFormDialog extends Dialog {
             }
         });
 
-        centerPanel.add(nombrePanel);
+        centerPanel.add(fechaInicioPanel);
         centerPanel.add(Box.createVerticalStrut(10));
-        centerPanel.add(descripcionPanel);
+        centerPanel.add(fechaFinPanel);
         centerPanel.add(estadoPanel);
-        centerPanel.add(idClientePanel);
+        centerPanel.add(idActivistaPanel);
         southPanel.add(btnCreate);
         add(centerPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
     }
 
-    public void readMateria() {
+    public void readProblema() {
         setSize(400, 200);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
@@ -147,7 +147,7 @@ public final class ProblemaFormDialog extends Dialog {
         add(southPanel, BorderLayout.SOUTH);
     }
 
-    public void updateMateria() {
+    public void updateProblema() {
         setSize(500, 460);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
@@ -159,17 +159,17 @@ public final class ProblemaFormDialog extends Dialog {
         idPanel.add(idField);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
-        JPanel nombrePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        nombrePanel.add(new JLabel("Fecha Inicio:      "));
-        nombreField = new TextField(20);
-        nombrePanel.add(nombreField);
-        nombrePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
+        JPanel fechaInicioPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        fechaInicioPanel.add(new JLabel("Fecha Inicio:      "));
+        fechaInicioField = new TextField(20);
+        fechaInicioPanel.add(fechaInicioField);
+        fechaInicioPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
-        JPanel descripcionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        descripcionPanel.add(new JLabel("Fecha Fin:   "));
-        descripcionField = new TextField(20);
-        descripcionPanel.add(descripcionField);
-        descripcionPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
+        JPanel fechaFinPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        fechaFinPanel.add(new JLabel("Fecha Fin:   "));
+        fechaFinField = new TextField(20);
+        fechaFinPanel.add(fechaFinField);
+        fechaFinPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
         JPanel estadoPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         estadoPanel.add(new JLabel("Estado:   "));
@@ -177,20 +177,20 @@ public final class ProblemaFormDialog extends Dialog {
         estadoPanel.add(estadoField);
         estadoPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
-        JPanel idClientePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        idClientePanel.add(new JLabel("Id Cliente:   "));
-        idClienteField = new TextField(20);
-        idClientePanel.add(idClienteField);
-        idClientePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
+        JPanel idActivistaPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        idActivistaPanel.add(new JLabel("Id Cliente:   "));
+        idActivistaField = new TextField(20);
+        idActivistaPanel.add(idActivistaField);
+        idActivistaPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
         Button btnUpdate = new Button("Actualizar");
         btnUpdate.addActionListener(e -> {
             try {
                 if (controller.actualizarProblema(Integer.parseInt(idField.getText().trim()),
-                        nombreField.getText().trim(),
-                        descripcionField.getText().trim(),
+                        fechaInicioField.getText().trim(),
+                        fechaFinField.getText().trim(),
                         estadoField.getText().trim(),
-                        Integer.parseInt(idClienteField.getText().trim()))) {
+                        Integer.parseInt(idActivistaField.getText().trim()))) {
                     JOptionPane.showMessageDialog(centerPanel, "Problema actualizada con exito");
                 } else {
                     JOptionPane.showMessageDialog(centerPanel, "La Problema no se pudo actualizar");
@@ -202,17 +202,17 @@ public final class ProblemaFormDialog extends Dialog {
         });
 
         centerPanel.add(idPanel);
-        centerPanel.add(nombrePanel);
+        centerPanel.add(fechaInicioPanel);
         centerPanel.add(Box.createVerticalStrut(10));
-        centerPanel.add(descripcionPanel);
+        centerPanel.add(fechaFinPanel);
         centerPanel.add(estadoPanel);
-        centerPanel.add(idClientePanel);
+        centerPanel.add(idActivistaPanel);
         southPanel.add(btnUpdate);
         add(centerPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
     }
 
-    public void deleteMateria() {
+    public void deleteProblema() {
         setSize(400, 200);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());

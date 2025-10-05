@@ -9,7 +9,6 @@ import view.MainFrame;
 import view.styles.Button;
 import view.styles.Dialog;
 import view.styles.TextField;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,11 +20,8 @@ public final class ProblemaActivistaFormDialog extends Dialog {
     private JPanel centerPanel;
     private JPanel southPanel;
     private MainFrame mainFrame;
-    private TextField idField;
-    private JComboBox diaCombo;
-    private TextField horaInicioField;
-    private TextField horaFinField;
-    private TextField idTutorField;
+    private TextField idProblemaField;
+    private TextField idActivistaField;
     private MainController controller;
 
     public ProblemaActivistaFormDialog(MainFrame owner, MainController controller, int option) {
@@ -38,44 +34,43 @@ public final class ProblemaActivistaFormDialog extends Dialog {
         switch (option) {
             case 0 -> {
                 setTitle("Agregar ProblemaActivista");
-                createHorario();
+                createProblemaActivista();
             }
             case 1 -> {
                 setTitle("Buscar ProblemaActivista");
-                readHorario();
+                readProblemaActivista();
             }
             case 2 -> {
                 setTitle("Eliminar ProblemaActivista");
-                deleteHorario();
+                deleteProblemaActivista();
             }
             default -> {}
         }
     }
 
-    public void createHorario() {
+    public void createProblemaActivista() {
         setSize(500, 300);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
-        JPanel horaInicioPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        horaInicioPanel.add(new JLabel("Problema ID:         "));
-        horaInicioField = new TextField(20);
-        horaInicioPanel.add(horaInicioField);
-        horaInicioPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
+        JPanel idProblemaPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        idProblemaPanel.add(new JLabel("Problema ID:         "));
+        idProblemaField = new TextField(20);
+        idProblemaPanel.add(idProblemaField);
+        idProblemaPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
-
-        JPanel idTutorPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        idTutorPanel.add(new JLabel("Activista ID:                "));
-        idTutorField = new TextField(20);
-        idTutorPanel.add(idTutorField);
-        idTutorPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
+        JPanel idActivistaPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        idActivistaPanel.add(new JLabel("Activista ID:                "));
+        idActivistaField = new TextField(20);
+        idActivistaPanel.add(idActivistaField);
+        idActivistaPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
         Button btnCreate = new Button("Agregar");
         btnCreate.addActionListener(e -> {
             try {
-                if (controller.getProblemaActivistaController().asignarProblemaActivista(Integer.parseInt(horaFinField.getText().trim()),
-                        Integer.parseInt(idTutorField.getText().trim()))) {
+                if (controller.getProblemaActivistaController().asignarProblemaActivista(Integer.parseInt(idProblemaField.getText().trim()),
+                        Integer.parseInt(idActivistaField.getText().trim()))) {
                     JOptionPane.showMessageDialog(centerPanel, "ProblemaActivista agregado con exito");
                 } else {
                     JOptionPane.showMessageDialog(centerPanel, "El ProblemaActivista no pudo agregarse");
@@ -87,14 +82,14 @@ public final class ProblemaActivistaFormDialog extends Dialog {
         });
 
         centerPanel.add(Box.createVerticalStrut(10));
-        centerPanel.add(horaInicioPanel);
-        centerPanel.add(idTutorPanel);
+        centerPanel.add(idProblemaPanel);
+        centerPanel.add(idActivistaPanel);
         southPanel.add(btnCreate);
         add(centerPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
     }
 
-    public void readHorario() {
+    public void readProblemaActivista() {
         setSize(400, 200);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
@@ -102,20 +97,20 @@ public final class ProblemaActivistaFormDialog extends Dialog {
 
         JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         idPanel.add(new JLabel("Problema ID:   "));
-        idField = new TextField(20);
-        idPanel.add(idField);
+        idProblemaField = new TextField(20);
+        idPanel.add(idProblemaField);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
         idPanel.add(new JLabel("Activista ID:   "));
-        idTutorField = new TextField(20);
-        idPanel.add(idTutorField);
+        idActivistaField = new TextField(20);
+        idPanel.add(idActivistaField);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
         Button btnSearch = new Button("Buscar");
         btnSearch.addActionListener(e -> {
             try {
-                ProblemaActivista problemaActivista = controller.getProblemaActivistaController().obtenerRelacion(Integer.parseInt(idField.getText().trim()),
-                        Integer.parseInt(idTutorField.getText().trim()));
+                ProblemaActivista problemaActivista = controller.getProblemaActivistaController().obtenerRelacion(Integer.parseInt(idProblemaField.getText().trim()),
+                        Integer.parseInt(idActivistaField.getText().trim()));
                 if (problemaActivista != null) {
                     JOptionPane.showMessageDialog(centerPanel, problemaActivista.toString());
                 } else {
@@ -134,7 +129,7 @@ public final class ProblemaActivistaFormDialog extends Dialog {
     }
 
 
-    public void deleteHorario() {
+    public void deleteProblemaActivista() {
         setSize(400, 250);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
@@ -142,20 +137,20 @@ public final class ProblemaActivistaFormDialog extends Dialog {
 
         JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         idPanel.add(new JLabel("Problema ID:   "));
-        idField = new TextField(20);
-        idPanel.add(idField);
+        idProblemaField = new TextField(20);
+        idPanel.add(idProblemaField);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
         idPanel.add(new JLabel("Activista ID:   "));
-        idTutorField = new TextField(20);
-        idPanel.add(idTutorField);
+        idActivistaField = new TextField(20);
+        idPanel.add(idActivistaField);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
         Button btnDelete = new Button("Eliminar");
         btnDelete.addActionListener(e -> {
             try {
-                if (controller.getProblemaActivistaController().eliminarRelacion(Integer.parseInt(idField.getText().trim()),
-                        Integer.parseInt(idTutorField.getText().trim()))) {
+                if (controller.getProblemaActivistaController().eliminarRelacion(Integer.parseInt(idProblemaField.getText().trim()),
+                        Integer.parseInt(idActivistaField.getText().trim()))) {
                     JOptionPane.showMessageDialog(centerPanel, "ProblemaActivista eliminado con exito");
                 } else {
                     JOptionPane.showMessageDialog(centerPanel, "El ProblemaActivista no se pudo eliminar");

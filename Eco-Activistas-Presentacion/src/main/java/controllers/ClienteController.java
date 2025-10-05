@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class ClienteController {
     private final IClienteDAO clienteDAO;
+    private static int contador = 100;
 
     /**
      * Constructor vacio que instancia un nuevo objeto ClienteDAO.
@@ -38,7 +39,8 @@ public class ClienteController {
         }
         if (direccion == null) direccion = "";
         if (telefonos == null) telefonos = "";
-        Cliente cliente = new Cliente(0, nombre, direccion, telefonos);
+        Cliente cliente = new Cliente(contador, nombre, direccion, telefonos);
+        contador++;
         return this.clienteDAO.insertar(cliente);
     }
 

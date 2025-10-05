@@ -6,6 +6,8 @@ package controllers;
 import DAO.ActivistaDAO;
 import interfaces.IActivistaDAO;
 import models.Activista;
+import view.MainFrame;
+
 import java.util.List;
 
 /**
@@ -16,6 +18,7 @@ import java.util.List;
  */
 public class ActivistaController {
     private final IActivistaDAO activistaDAO;
+    private static int contador = 100;
 
     /**
      * Constructor vacio que instancia una nueva instancia de la clase ActivistaDAO.
@@ -39,7 +42,8 @@ public class ActivistaController {
         }
         if (correo == null) correo = "";
         if (telefono == null) telefono = "";
-        Activista activista = new Activista(0, nombre, correo, telefono);
+        Activista activista = new Activista(contador, nombre, correo, telefono);
+        contador++;
         return this.activistaDAO.insertar(activista);
     }
 

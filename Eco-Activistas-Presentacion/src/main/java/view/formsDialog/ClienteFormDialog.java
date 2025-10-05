@@ -9,9 +9,7 @@ import models.Cliente;
 import view.MainFrame;
 import view.styles.Button;
 import view.styles.Dialog;
-import view.styles.Style;
 import view.styles.TextField;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -25,10 +23,8 @@ public final class ClienteFormDialog extends Dialog {
     private MainFrame mainFrame;
     private TextField idField;
     private TextField nombreField;
-    private JComboBox gradoEscolarCombo;
-    private TextField edadField;
+    private TextField direccionField;
     private TextField telefonoField;
-    private TextField escuelaField;
     private ClienteController controller;
 
     public ClienteFormDialog(MainFrame owner, MainController controller, int option) {
@@ -41,25 +37,25 @@ public final class ClienteFormDialog extends Dialog {
         switch (option) {
             case 0 -> {
                 setTitle("Agregar Cliente");
-                createEstudiante();
+                createCliente();
             }
             case 1 -> {
                 setTitle("Buscar Cliente");
-                readEstudiante();
+                readCliente();
             }
             case 2 -> {
                 setTitle("Actualizar Cliente");
-                updateEstudiante();
+                updateCliente();
             }
             case 3 -> {
                 setTitle("Eliminar Cliente");
-                deleteEstudiante();
+                deleteCliente();
             }
             default -> {}
         }
     }
 
-    public void createEstudiante() {
+    public void createCliente() {
         setSize(500, 350);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
@@ -71,11 +67,11 @@ public final class ClienteFormDialog extends Dialog {
         nombrePanel.add(nombreField);
         nombrePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
-        JPanel edadPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        edadPanel.add(new JLabel("Direccion:          "));
-        edadField = new TextField(20);
-        edadPanel.add(edadField);
-        edadPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
+        JPanel direccionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        direccionPanel.add(new JLabel("Direccion:          "));
+        direccionField = new TextField(20);
+        direccionPanel.add(direccionField);
+        direccionPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
         JPanel telefonoPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         telefonoPanel.add(new JLabel("Telefonos:         "));
@@ -88,7 +84,7 @@ public final class ClienteFormDialog extends Dialog {
         btnCreate.addActionListener(e -> {
             try {
                 if (controller.agregarCliente(nombreField.getText().trim(),
-                        edadField.getText().trim(),
+                        direccionField.getText().trim(),
                         telefonoField.getText().trim())){
                     JOptionPane.showMessageDialog(centerPanel, "Cliente agregado con exito");
                 } else {
@@ -102,21 +98,21 @@ public final class ClienteFormDialog extends Dialog {
 
         centerPanel.add(nombrePanel);
         centerPanel.add(Box.createVerticalStrut(10));
-        centerPanel.add(edadPanel);
+        centerPanel.add(direccionPanel);
         centerPanel.add(telefonoPanel);
         southPanel.add(btnCreate);
         add(centerPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
     }
 
-    public void readEstudiante() {
+    public void readCliente() {
         setSize(400, 200);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
         JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        idPanel.add(new JLabel("Matricula del Cliente:   "));
+        idPanel.add(new JLabel("ID del Cliente:   "));
         idField = new TextField(12);
         idPanel.add(idField);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
@@ -143,14 +139,14 @@ public final class ClienteFormDialog extends Dialog {
         add(southPanel, BorderLayout.SOUTH);
     }
 
-    public void updateEstudiante() {
+    public void updateCliente() {
         setSize(500, 520);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
         JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        idPanel.add(new JLabel("Matricula Cliente:   "));
+        idPanel.add(new JLabel("ID del Cliente:   "));
         idField = new TextField(20);
         idPanel.add(idField);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
@@ -161,11 +157,11 @@ public final class ClienteFormDialog extends Dialog {
         nombrePanel.add(nombreField);
         nombrePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
-        JPanel edadPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        edadPanel.add(new JLabel("Direccion:          "));
-        edadField = new TextField(20);
-        edadPanel.add(edadField);
-        edadPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
+        JPanel direccionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        direccionPanel.add(new JLabel("Direccion:          "));
+        direccionField = new TextField(20);
+        direccionPanel.add(direccionField);
+        direccionPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
         JPanel telefonoPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         telefonoPanel.add(new JLabel("Telefonos:         "));
@@ -178,7 +174,7 @@ public final class ClienteFormDialog extends Dialog {
             try {
                 if (controller.actualizarCliente(Integer.parseInt(idField.getText().trim()),
                         nombreField.getText().trim(),
-                        edadField.getText().trim(),
+                        direccionField.getText().trim(),
                         telefonoField.getText().trim())) {
                     JOptionPane.showMessageDialog(centerPanel, "Cliente actualizado con exito");
                 } else {
@@ -193,21 +189,21 @@ public final class ClienteFormDialog extends Dialog {
         centerPanel.add(idPanel);
         centerPanel.add(nombrePanel);
         centerPanel.add(Box.createVerticalStrut(10));
-        centerPanel.add(edadPanel);
+        centerPanel.add(direccionPanel);
         centerPanel.add(telefonoPanel);
         southPanel.add(btnUpdate);
         add(centerPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
     }
 
-    public void deleteEstudiante() {
+    public void deleteCliente() {
         setSize(400, 200);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
         JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        idPanel.add(new JLabel("Matricula del Cliente:   "));
+        idPanel.add(new JLabel("ID del Cliente:   "));
         idField = new TextField(12);
         idPanel.add(idField);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
