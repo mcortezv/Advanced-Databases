@@ -34,7 +34,6 @@ public class ActivistaDAO implements IActivistaDAO {
             ps.setDate(3, Date.valueOf(activista.getFchIngreso()));
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
-            ex.printStackTrace();
             return false;
         }
     }
@@ -62,7 +61,7 @@ public class ActivistaDAO implements IActivistaDAO {
                 }
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            return null;
         }
         return null;
     }
@@ -88,7 +87,7 @@ public class ActivistaDAO implements IActivistaDAO {
                 lista.add(a);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            return null;
         }
         return lista;
     }
@@ -110,7 +109,6 @@ public class ActivistaDAO implements IActivistaDAO {
             ps.setInt(4, activista.getIdActivista());
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
-            ex.printStackTrace();
             return false;
         }
     }
@@ -129,7 +127,6 @@ public class ActivistaDAO implements IActivistaDAO {
             ps.setInt(1, idActivista);
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
-
             return false;
         }
     }

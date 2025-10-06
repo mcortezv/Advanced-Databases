@@ -49,7 +49,7 @@ public final class ActivistaFormDialog extends Dialog {
             }
             case 3 -> {
                 setTitle("Eliminar Activista");
-                deleteTutor();
+                deleteActivista();
             }
             default -> {}
         }
@@ -125,11 +125,11 @@ public final class ActivistaFormDialog extends Dialog {
                 if (activista != null) {
                     JOptionPane.showMessageDialog(centerPanel, activista.toString());
                 } else {
-                    JOptionPane.showMessageDialog(centerPanel, "La Activista no se pudo encontrar");
+                    JOptionPane.showMessageDialog(centerPanel, "El Activista no se pudo encontrar");
                 }
                 dispose();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(centerPanel, "Todos los campos son obligatorios");
+                JOptionPane.showMessageDialog(centerPanel, "Ingrese un valor entero");
             }
         });
 
@@ -171,17 +171,22 @@ public final class ActivistaFormDialog extends Dialog {
 
         Button btnUpdate = new Button("Actualizar");
         btnUpdate.addActionListener(e -> {
-            try {
-                if (controller.actualizarActivista(Integer.parseInt(idField.getText().trim()),
-                        nombreField.getText().trim(),
-                        telefonoField.getText().trim(),
-                        fechaIngresoField.getText().trim())) {
-                    JOptionPane.showMessageDialog(centerPanel, "Activista actualizado con exito");
-                } else {
-                    JOptionPane.showMessageDialog(centerPanel, "El Activista no se pudo actualizar");
+            if (!nombreField.getText().trim().isBlank() || !telefonoField.getText().trim().isBlank() ||
+                    !fechaIngresoField.getText().trim().isBlank()) {
+                try {
+                    if (controller.actualizarActivista(Integer.parseInt(idField.getText().trim()),
+                            nombreField.getText().trim(),
+                            telefonoField.getText().trim(),
+                            fechaIngresoField.getText().trim())) {
+                        JOptionPane.showMessageDialog(centerPanel, "Activista actualizado con exito");
+                    } else {
+                        JOptionPane.showMessageDialog(centerPanel, "El Activista no se pudo actualizar");
+                    }
+                    dispose();
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(centerPanel, "Ingrese un valor entero para el ID");
                 }
-                dispose();
-            } catch (Exception ex) {
+            } else {
                 JOptionPane.showMessageDialog(centerPanel, "Todos los campos son obligatorios");
             }
         });
@@ -196,7 +201,7 @@ public final class ActivistaFormDialog extends Dialog {
         add(southPanel, BorderLayout.SOUTH);
     }
 
-    public void deleteTutor() {
+    public void deleteActivista() {
         setSize(400, 200);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
@@ -219,7 +224,7 @@ public final class ActivistaFormDialog extends Dialog {
                 }
                 dispose();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(centerPanel, "Todos los campos son obligatorios");
+                JOptionPane.showMessageDialog(centerPanel, "Ingrese un valor entero");
             }
         });
 

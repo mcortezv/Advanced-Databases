@@ -82,7 +82,8 @@ public final class ClienteFormDialog extends Dialog {
 
         Button btnCreate = new Button("Agregar");
         btnCreate.addActionListener(e -> {
-            try {
+            if (!nombreField.getText().trim().isBlank() || !direccionField.getText().trim().isBlank() ||
+                    !telefonoField.getText().trim().isBlank()) {
                 if (controller.agregarCliente(nombreField.getText().trim(),
                         direccionField.getText().trim(),
                         telefonoField.getText().trim())){
@@ -91,7 +92,7 @@ public final class ClienteFormDialog extends Dialog {
                     JOptionPane.showMessageDialog(centerPanel, "El Cliente no se pudo agregar");
                 }
                 dispose();
-            } catch (Exception ex) {
+            } else  {
                 JOptionPane.showMessageDialog(centerPanel, "Todos los campos son obligatorios");
             }
         });
@@ -129,7 +130,7 @@ public final class ClienteFormDialog extends Dialog {
                 }
                 dispose();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(centerPanel, "Todos los campos son obligatorios");
+                JOptionPane.showMessageDialog(centerPanel, "Ingrese un valor entero");
             }
         });
 
@@ -171,17 +172,22 @@ public final class ClienteFormDialog extends Dialog {
 
         Button btnUpdate = new Button("Actualizar");
         btnUpdate.addActionListener(e -> {
-            try {
-                if (controller.actualizarCliente(Integer.parseInt(idField.getText().trim()),
-                        nombreField.getText().trim(),
-                        direccionField.getText().trim(),
-                        telefonoField.getText().trim())) {
-                    JOptionPane.showMessageDialog(centerPanel, "Cliente actualizado con exito");
-                } else {
-                    JOptionPane.showMessageDialog(centerPanel, "El Cliente no se pudo actualizar");
+            if (!nombreField.getText().trim().isBlank() || !direccionField.getText().trim().isBlank() ||
+                    !telefonoField.getText().trim().isBlank()) {
+                try {
+                    if (controller.actualizarCliente(Integer.parseInt(idField.getText().trim()),
+                            nombreField.getText().trim(),
+                            direccionField.getText().trim(),
+                            telefonoField.getText().trim())) {
+                        JOptionPane.showMessageDialog(centerPanel, "Cliente actualizado con exito");
+                    } else {
+                        JOptionPane.showMessageDialog(centerPanel, "El Cliente no se pudo actualizar");
+                    }
+                    dispose();
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(centerPanel, "Ingrese un valor entero para el ID");
                 }
-                dispose();
-            } catch (Exception ex) {
+            } else {
                 JOptionPane.showMessageDialog(centerPanel, "Todos los campos son obligatorios");
             }
         });
@@ -219,7 +225,7 @@ public final class ClienteFormDialog extends Dialog {
                 }
                 dispose();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(centerPanel, "Todos los campos son obligatorios");
+                JOptionPane.showMessageDialog(centerPanel, "Ingrese un valor entero");
             }
         });
 

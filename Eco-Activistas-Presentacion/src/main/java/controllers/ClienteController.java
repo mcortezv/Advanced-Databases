@@ -34,9 +34,6 @@ public class ClienteController {
      * @return boolean
      */
     public boolean agregarCliente(String nombre, String direccion, String telefonos) {
-        if (nombre == null || nombre.trim().isEmpty()) {
-            return false;
-        }
         if (direccion == null) direccion = "";
         if (telefonos == null) telefonos = "";
         Cliente cliente = new Cliente(contador, nombre, direccion, telefonos);

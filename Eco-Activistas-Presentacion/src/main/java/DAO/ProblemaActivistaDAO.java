@@ -20,7 +20,7 @@ public class ProblemaActivistaDAO implements IProblemaActivistaDAO {
     /**
      * Metodo que permite insertar un nuevo ProblemaActivista directamente a la base datos.
      *
-     * @param ProblemaActivista
+     * @param pa ProblemaActivista
      * @return boolean
      */
     @Override
@@ -34,7 +34,6 @@ public class ProblemaActivistaDAO implements IProblemaActivistaDAO {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
             return false;
         }
     }
@@ -62,7 +61,7 @@ public class ProblemaActivistaDAO implements IProblemaActivistaDAO {
                 }
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            return null;
         }
         return null;
     }
@@ -86,7 +85,7 @@ public class ProblemaActivistaDAO implements IProblemaActivistaDAO {
                 lista.add(pa);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            return null;
         }
         return lista;
     }
@@ -107,7 +106,6 @@ public class ProblemaActivistaDAO implements IProblemaActivistaDAO {
             ps.setInt(2, idActivista);
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
-            ex.printStackTrace();
             return false;
         }
     }

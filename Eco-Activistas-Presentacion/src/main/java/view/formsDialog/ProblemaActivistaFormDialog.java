@@ -68,15 +68,19 @@ public final class ProblemaActivistaFormDialog extends Dialog {
 
         Button btnCreate = new Button("Agregar");
         btnCreate.addActionListener(e -> {
-            try {
-                if (controller.getProblemaActivistaController().asignarProblemaActivista(Integer.parseInt(idProblemaField.getText().trim()),
-                        Integer.parseInt(idActivistaField.getText().trim()))) {
-                    JOptionPane.showMessageDialog(centerPanel, "ProblemaActivista agregado con exito");
-                } else {
-                    JOptionPane.showMessageDialog(centerPanel, "El ProblemaActivista no pudo agregarse");
+            if (!idProblemaField.getText().trim().isBlank() || !idActivistaField.getText().trim().isBlank()) {
+                try {
+                    if (controller.getProblemaActivistaController().asignarProblemaActivista(Integer.parseInt(idProblemaField.getText().trim()),
+                            Integer.parseInt(idActivistaField.getText().trim()))) {
+                        JOptionPane.showMessageDialog(centerPanel, "ProblemaActivista agregado con exito");
+                    } else {
+                        JOptionPane.showMessageDialog(centerPanel, "El ProblemaActivista no pudo agregarse");
+                    }
+                    dispose();
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(centerPanel, "Todos los campos son obligatorios");
                 }
-                dispose();
-            } catch (Exception ex) {
+            } else {
                 JOptionPane.showMessageDialog(centerPanel, "Todos los campos son obligatorios");
             }
         });
@@ -118,7 +122,7 @@ public final class ProblemaActivistaFormDialog extends Dialog {
                 }
                 dispose();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(centerPanel, "Todos los campos son obligatorios");
+                JOptionPane.showMessageDialog(centerPanel, "Ingrese un valor entero");
             }
         });
 
@@ -157,7 +161,7 @@ public final class ProblemaActivistaFormDialog extends Dialog {
                 }
                 dispose();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(centerPanel, "Todos los campos son obligatorios");
+                JOptionPane.showMessageDialog(centerPanel, "Ingrese un valor entero");
             }
         });
 

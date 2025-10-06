@@ -33,7 +33,6 @@ public class ClienteDAO implements IClienteDAO {
             ps.setString(3, cliente.getTelefonos());
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
-            ex.printStackTrace();
             return false;
         }
     }
@@ -61,7 +60,7 @@ public class ClienteDAO implements IClienteDAO {
                 }
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            return null;
         }
         return null;
     }
@@ -87,7 +86,7 @@ public class ClienteDAO implements IClienteDAO {
                 lista.add(c);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            return null;
         }
         return lista;
     }

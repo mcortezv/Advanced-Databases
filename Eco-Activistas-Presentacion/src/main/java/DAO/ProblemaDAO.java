@@ -39,7 +39,6 @@ public class ProblemaDAO implements IProblemaDAO {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
             return false;
         }
     }
@@ -71,7 +70,7 @@ public class ProblemaDAO implements IProblemaDAO {
                 }
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            return null;
         }
         return null;
     }
@@ -101,7 +100,7 @@ public class ProblemaDAO implements IProblemaDAO {
                 lista.add(p);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            return null;
         }
         return lista;
     }
@@ -128,7 +127,6 @@ public class ProblemaDAO implements IProblemaDAO {
             ps.setInt(5, problema.getIdProblema());
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
-            ex.printStackTrace();
             return false;
         }
     }
@@ -147,7 +145,6 @@ public class ProblemaDAO implements IProblemaDAO {
             ps.setInt(1, idProblema);
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
-            ex.printStackTrace();
             return false;
         }
     }
