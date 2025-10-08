@@ -3,13 +3,12 @@
  */
 
 package main;
-
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 /**
  *
- * @author mdjes
+ * @author Cortez, Manuel;
  */
 public class SistemaBibliotecaUniversitariaJPA {
 
