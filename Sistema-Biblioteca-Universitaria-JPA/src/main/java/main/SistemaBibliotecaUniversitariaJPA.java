@@ -4,6 +4,9 @@
 
 package main;
 
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
 /**
  *
  * @author mdjes
@@ -11,6 +14,7 @@ package main;
 public class SistemaBibliotecaUniversitariaJPA {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BibliotecaUniversitariaPU");
+        emf.close();
     }
 }
