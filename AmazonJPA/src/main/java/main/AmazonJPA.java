@@ -6,7 +6,7 @@ package main;
 
 /**
  *
- * @author mdjes
+ * @author Cortez, Manuel;
  */
 public class AmazonJPA {
 
