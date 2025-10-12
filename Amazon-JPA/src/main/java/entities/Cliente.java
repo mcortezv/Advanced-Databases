@@ -6,7 +6,7 @@ package entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "num_cliente")
     private Long numCliente;
 
