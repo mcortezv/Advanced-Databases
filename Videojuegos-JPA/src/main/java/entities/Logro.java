@@ -15,7 +15,7 @@ import jakarta.persistence.*;
 public class Logro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_logro;
+    private Long id;
     private int puntos;
     private String nombre;
 
@@ -30,15 +30,15 @@ public class Logro {
         this.id_videojuego = id_videojuego;
         this.nombre = nombre;
         this.puntos = puntos;
-        this.id_logro = id_logro;
+        this.id = id_logro;
     }
 
-    public Long getId_logro() {
-        return id_logro;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_logro(Long id_logro) {
-        this.id_logro = id_logro;
+    public void setId(Long id_logro) {
+        this.id = id_logro;
     }
 
     public int getPuntos() {
@@ -63,5 +63,15 @@ public class Logro {
 
     public void setId_videojuego(Videojuego id_videojuego) {
         this.id_videojuego = id_videojuego;
+    }
+
+    @Override
+    public String toString() {
+        return "Logro{" +
+                "id_logro=" + id +
+                ", puntos=" + puntos +
+                ", nombre='" + nombre + '\'' +
+                ", id_videojuego=" + id_videojuego +
+                '}';
     }
 }

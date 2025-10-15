@@ -16,7 +16,7 @@ import java.util.Set;
 public class Videojuego {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_videojuego;
+    private Long id;
     private int puntaje;
     private String desarrolladora;
     private String nombre;
@@ -34,15 +34,15 @@ public class Videojuego {
         this.nombre = nombre;
         this.desarrolladora = desarrolladora;
         this.puntaje = puntaje;
-        this.id_videojuego = id_videojuego;
+        this.id = id_videojuego;
     }
 
-    public Long getId_videojuego() {
-        return id_videojuego;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_videojuego(Long id_videojuego) {
-        this.id_videojuego = id_videojuego;
+    public void setId(Long id_videojuego) {
+        this.id = id_videojuego;
     }
 
     public int getPuntaje() {
@@ -75,5 +75,16 @@ public class Videojuego {
 
     public void setId_jugador(Set<Jugador> id_jugador) {
         this.id_jugador = id_jugador;
+    }
+
+    @Override
+    public String toString() {
+        return "Videojuego{" +
+                "id_videojuego=" + id +
+                ", puntaje=" + puntaje +
+                ", desarrolladora='" + desarrolladora + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", id_jugador=" + id_jugador +
+                '}';
     }
 }

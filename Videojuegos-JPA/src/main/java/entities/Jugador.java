@@ -18,9 +18,12 @@ public class Jugador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_jugador;
+    private Long id;
 
     private LocalDate fecha_nacimiento;
+
+    @Transient
+    private int edad;
 
     @OneToOne
     @JoinColumn(name = "id_direccion")
@@ -35,21 +38,23 @@ public class Jugador {
     public Jugador() {
     }
 
-    public Jugador(Long id_jugador, LocalDate fecha_nacimiento, Direccion id_direccion, String pseudonimo, String sexo, Set<Videojuego> id_videojuego) {
-        this.id_jugador = id_jugador;
+    public Jugador(Long id_jugador, LocalDate fecha_nacimiento, int edad, Direccion id_direccion, String pseudonimo, String sexo, Set<Videojuego> id_videojuego) {
+        this.id = id_jugador;
         this.fecha_nacimiento = fecha_nacimiento;
+        this.edad = edad;
         this.id_direccion = id_direccion;
         this.pseudonimo = pseudonimo;
         this.sexo = sexo;
         this.id_videojuego = id_videojuego;
+        this.edad = LocalDate.now().getYear() - fecha_nacimiento.getYear();
     }
 
-    public Long getId_jugador() {
-        return id_jugador;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_jugador(Long id_jugador) {
-        this.id_jugador = id_jugador;
+    public void setId(Long id_jugador) {
+        this.id = id_jugador;
     }
 
     public LocalDate getFecha_nacimiento() {
@@ -58,6 +63,14 @@ public class Jugador {
 
     public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     public Direccion getId_direccion() {
@@ -90,5 +103,18 @@ public class Jugador {
 
     public void setId_videojuego(Set<Videojuego> id_videojuego) {
         this.id_videojuego = id_videojuego;
+    }
+
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "id_jugador=" + id +
+                ", fecha_nacimiento=" + fecha_nacimiento +
+                ", edad=" + edad +
+                ", id_direccion=" + id_direccion +
+                ", pseudonimo='" + pseudonimo + '\'' +
+                ", sexo='" + sexo + '\'' +
+                ", id_videojuego=" + id_videojuego +
+                '}';
     }
 }

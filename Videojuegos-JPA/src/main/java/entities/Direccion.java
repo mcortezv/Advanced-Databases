@@ -16,7 +16,7 @@ public class Direccion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_direccion;
+    private Long id;
     private String calle;
     private String colonia;
     private String numero;
@@ -24,12 +24,19 @@ public class Direccion {
     public Direccion() {
     }
 
-    public Long getId_direccion() {
-        return id_direccion;
+    public Direccion(Long id_direccion, String calle, String colonia, String numero) {
+        this.id = id_direccion;
+        this.calle = calle;
+        this.colonia = colonia;
+        this.numero = numero;
     }
 
-    public void setId_direccion(Long id_direccion) {
-        this.id_direccion = id_direccion;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id_direccion) {
+        this.id = id_direccion;
     }
 
     public String getCalle() {
@@ -54,5 +61,15 @@ public class Direccion {
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    @Override
+    public String toString() {
+        return "Direccion{" +
+                "id_direccion=" + id +
+                ", calle='" + calle + '\'' +
+                ", colonia='" + colonia + '\'' +
+                ", numero='" + numero + '\'' +
+                '}';
     }
 }
