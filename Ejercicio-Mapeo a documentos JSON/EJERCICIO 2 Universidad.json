@@ -1,0 +1,32 @@
+[
+  {
+    "_id": 1,
+    "nombre": "Luis Ramirez",
+    "carrera": "Ingeniería en Sistemas",
+    "inscripciones": [
+      {
+        "curso": {
+          "_id": 101,
+          "nombre": "Bases de Datos",
+          "creditos": 8
+        },
+        "calificacion": 95
+      }
+    ]
+  },
+  {
+    "_id": 2,
+    "nombre": "Marta Gomez",
+    "carrera": "Administración",
+    "inscripciones": [
+      {
+        "curso": {
+          "_id": 102,
+          "nombre": "Contabilidad I",
+          "creditos": 6
+        },
+        "calificacion": 88
+      }
+    ]
+  }
+]
